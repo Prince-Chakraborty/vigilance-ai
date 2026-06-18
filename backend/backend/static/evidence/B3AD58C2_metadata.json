@@ -1,0 +1,16 @@
+{
+  "incident_id": "B3AD58C2",
+  "timestamp": "2026-06-19T01:39:02.900340",
+  "camera_id": "CAM-001",
+  "location": "MG Road, Bengaluru",
+  "source_file": "live_feed",
+  "frame_size": [
+    2940,
+    1912
+  ],
+  "total_vehicles": 0,
+  "total_persons": 2,
+  "violations": [],
+  "violation_count": 0,
+  "red_light_active": false
+}
