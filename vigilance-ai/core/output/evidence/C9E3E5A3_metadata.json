@@ -1,0 +1,31 @@
+{
+  "incident_id": "C9E3E5A3",
+  "timestamp": "2026-06-20T22:57:33.338883",
+  "camera_id": "CAM-001",
+  "location": "Bengaluru, Karnataka",
+  "source_file": "sample_images/test_traffic_2.jpg",
+  "frame_size": [
+    4592,
+    3448
+  ],
+  "total_vehicles": 1,
+  "total_persons": 4,
+  "violations": [
+    {
+      "violation_type": "wrong_side_driving",
+      "violation_label": "Wrong-Side Driving",
+      "severity": "CRITICAL",
+      "confidence": 0.452,
+      "license_plate": null,
+      "notes": "Vehicle centroid detected in oncoming lane",
+      "bbox": {
+        "x1": 775.6,
+        "y1": 2176.2,
+        "x2": 1685.2,
+        "y2": 3433.5
+      }
+    }
+  ],
+  "violation_count": 1,
+  "red_light_active": false
+}

@@ -1,0 +1,16 @@
+{
+  "incident_id": "C5EF1D2F",
+  "timestamp": "2026-06-20T18:13:05.181229",
+  "camera_id": "CAM-001",
+  "location": "Bengaluru, Karnataka",
+  "source_file": "sample_images/test_traffic_1.jpg",
+  "frame_size": [
+    6000,
+    4000
+  ],
+  "total_vehicles": 0,
+  "total_persons": 4,
+  "violations": [],
+  "violation_count": 0,
+  "red_light_active": false
+}
