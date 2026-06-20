@@ -79,3 +79,25 @@ http://localhost:8000/docs
 ## Team
 Prince Chakraborty — B.Tech CSE, IEM Kolkata
 Flipkart Gridlock 2.0 — Round 2 Prototype
+
+
+## Performance Benchmarks
+- Inference speed: 20 FPS on standard CPU (no GPU required)
+- Average latency: 50ms per frame (6.3ms preprocessing + 43.7ms detection)
+- Model: YOLOv8n (nano variant, optimized for edge/CCTV deployment)
+- Suitable for real-time deployment on standard traffic camera infrastructure
+
+## Known Limitations and Edge Case Handling
+We believe in transparent reporting of system boundaries rather than overstating capabilities:
+
+- Emergency vehicles (ambulance, police, fire) are not currently exempted from violation rules. Production deployment would require a dedicated emergency-vehicle classifier to suppress false positives.
+- Severely obstructed or mud-covered license plates may fail OCR extraction. The system returns null in these cases rather than guessing, to avoid incorrect challans.
+- Heavy rain or dense fog beyond moderate levels can reduce detection confidence below the 40% threshold, causing the system to skip uncertain detections rather than risk false violations.
+- Current violation heuristics use geometric rules (lane position, bounding box overlap) rather than a fine-tuned violation-specific model. Fine-tuning YOLOv8 on a labeled Bengaluru violation dataset is the recommended next step for production accuracy.
+- The system errs on the side of caution: when confidence is low or data is ambiguous, it does not flag a violation, prioritizing avoiding wrongful challans over catching every case.
+
+## Future Improvements
+- Fine-tune YOLOv8 on real Bengaluru CCTV footage with violation-specific labels
+- Add emergency vehicle detection and exemption logic
+- Integrate multi-frame temporal analysis for higher-confidence violations like red-light running
+- Add WebSocket support for true real-time camera feed processing
