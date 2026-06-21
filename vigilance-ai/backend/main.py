@@ -38,13 +38,6 @@ app.include_router(challan.router,    prefix="/api/v1", tags=["Challan"])
 # Auto-create tables on startup
 init_db()
 
-# Pre-load YOLO model at startup to avoid first-request timeout
-try:
-    from routers.analyze import get_pipeline
-    get_pipeline()
-    print("[Startup] YOLO model pre-loaded successfully")
-except Exception as e:
-    print(f"[Startup] Model preload skipped: {e}")
 
 # Auto-seed demo data if database is empty (Render free tier has no persistent disk)
 try:
