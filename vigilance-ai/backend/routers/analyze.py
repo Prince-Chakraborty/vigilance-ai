@@ -6,6 +6,7 @@ saves to DB, returns annotated image + metadata.
 
 import sys
 import json
+import gc
 import numpy as np
 from pathlib import Path
 from datetime import datetime
@@ -87,6 +88,8 @@ async def analyze_image(
     db.commit()
 
     api_resp = pipeline.to_api_response(evidence)
+
+    gc.collect()
 
     return AnalyzeResponse(
         success             = True,

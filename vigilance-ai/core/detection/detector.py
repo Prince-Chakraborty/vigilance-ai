@@ -97,7 +97,10 @@ class ViolationDetector:
             img,
             conf=DETECTION_CONFIDENCE_THRESHOLD,
             iou=NMS_IOU_THRESHOLD,
-            verbose=False
+            verbose=False,
+            imgsz=320,
+            device='cpu',
+            half=False
         )
         detections = []
         for result in results:
