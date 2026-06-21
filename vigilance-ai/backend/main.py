@@ -45,8 +45,12 @@ try:
     _count = _db.query(ViolationRecord).count()
     _db.close()
     if _count == 0:
-        from utils.seed import seed
-        seed()
+        import importlib.util
+        seed_path = ROOT / "backend" / "utils" / "seed.py"
+        spec = importlib.util.spec_from_file_location("seed_module", seed_path)
+        seed_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(seed_module)
+        seed_module.seed()
 except Exception as e:
     print(f"[Startup] Seed check skipped: {e}")
 
