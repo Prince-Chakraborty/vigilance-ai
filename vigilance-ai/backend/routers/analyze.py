@@ -31,7 +31,7 @@ def get_pipeline() -> VigilancePipeline:
     if _pipeline is None:
         _pipeline = VigilancePipeline(
             yolo_model="yolov8n.pt",
-            enable_ocr=True,
+            enable_ocr=False,
             output_dir="backend/static/evidence",
         )
     return _pipeline
