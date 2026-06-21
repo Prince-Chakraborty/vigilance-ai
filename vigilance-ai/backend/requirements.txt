@@ -5,6 +5,5 @@ sqlalchemy>=2.0.23
 pillow>=10.4.0
 numpy>=1.26.0
 opencv-python-headless>=4.8.0
-easyocr>=1.7.1
 ultralytics>=8.0.200
 aiofiles>=23.2.1

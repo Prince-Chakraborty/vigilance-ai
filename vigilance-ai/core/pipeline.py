@@ -14,7 +14,6 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from preprocessing.enhancer import preprocess_from_path, preprocess
 from detection.detector import ViolationDetector
-from ocr.plate_reader import PlateReader
 from output.annotator import EvidenceGenerator
 
 
@@ -29,7 +28,11 @@ class VigilancePipeline:
         location: str = "Bengaluru, Karnataka"
     ):
         self.detector  = ViolationDetector(yolo_model)
-        self.ocr       = PlateReader() if enable_ocr else None
+        if enable_ocr:
+            from ocr.plate_reader import PlateReader
+            self.ocr = PlateReader()
+        else:
+            self.ocr = None
         self.evidence  = EvidenceGenerator(output_dir)
         self.camera_id = camera_id
         self.location  = location
