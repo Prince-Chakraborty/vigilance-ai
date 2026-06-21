@@ -38,6 +38,18 @@ app.include_router(challan.router,    prefix="/api/v1", tags=["Challan"])
 # Auto-create tables on startup
 init_db()
 
+# Auto-seed demo data if database is empty (Render free tier has no persistent disk)
+try:
+    from db.database import SessionLocal, ViolationRecord
+    _db = SessionLocal()
+    _count = _db.query(ViolationRecord).count()
+    _db.close()
+    if _count == 0:
+        from utils.seed import seed
+        seed()
+except Exception as e:
+    print(f"[Startup] Seed check skipped: {e}")
+
 @app.get("/")
 def root():
     return {"system": "VigilanceAI", "version": "1.0.0", "status": "running", "docs": "/docs"}
