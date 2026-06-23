@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8000/api/v1';
+const BASE_URL = 'https://vigilance-ai-backend.onrender.com/api/v1';
 export const api = {
   async getStats() {
     const res = await fetch(`${BASE_URL}/stats`);
